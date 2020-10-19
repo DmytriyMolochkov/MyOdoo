@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record model="ir.ui.view" id="feedback_form_view">
+    <field name="name">FeedbackForm.form</field>
+    <field name="model">feedbackform</field>
+    <field name="arch" type="xml">
+      <form string="Feedback Form">
+        <sheet>
+          <group>
+            <field name="userName"/>
+            <field name="userMail"/>
+            <field name="name"/>
+            <field name="text"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record model="ir.actions.act_window" id="feedback_form_list_action">
+    <field name="name">FeedbackForms</field>
+    <field name="res_model">feedbackform</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+  
+  <record model="ir.actions.act_window" id="new_feedback_form_action">
+    <field name="name">FeedbackForm.action</field>
+    <field name="res_model">feedbackform</field>
+    <field name="view_mode">form</field>
+  </record>
+
+  <menuitem id="main_feedback_form_menu" name="Форма обратной связи" action="new_feedback_form_action"/>
+  <menuitem id="main_feedback_menu" name="Посмотреть обращения"
+            parent="main_feedback_form_menu"
+            action="feedback_form_list_action"
+  />
+</odoo>
